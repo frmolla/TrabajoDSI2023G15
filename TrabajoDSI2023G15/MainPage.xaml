@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Canvas Margin="242,543,1058,166">
+            <ContentControl>
+                <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10">
+                    <Image Source="/Assets/Carta.png"/>
+                    <TextBlock x:Name="Name_text" Text="Nombre" Canvas.Left="69" Canvas.Top="17"/>
+                    <Image x:Name="Imagen" Source="/Assets/play_background.png" Height="123" Width="171" Canvas.Left="10" Canvas.Top="44" Stretch="Fill"/>
+                    <TextBlock x:Name="Descripcion_text" Text="Texto" Canvas.Left="78" Canvas.Top="212"/>
+                    <Image Source="/Assets/Mana.png" Canvas.Left="-19" Canvas.Top="-18"/>
+                    <TextBlock x:Name="Mana_text" Text="3" Canvas.Left="2" Canvas.Top="-4"/>
+                    <Image Source="/Assets/Vida.png" RenderTransformOrigin="0.892,0.5" Canvas.Left="-15" Canvas.Top="37" />
+                    <TextBlock x:Name="Vida_text" Text="3" Canvas.Left="2" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Image Source="/Assets/Ataque.png" Canvas.Left="-13" Canvas.Top="78"/>
+                    <TextBlock x:Name="Ataque_text" Text="3" Canvas.Left="2" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Image x:Name="Rareza" Source="/Assets/Rareza_Rara.png" Canvas.Left="145" RenderTransformOrigin="0.707,0.514" />
+                </Canvas>
+            </ContentControl>
+        </Canvas>
     </Grid>
 </Page>
