@@ -139,12 +139,18 @@
     <Content Include="Assets\card_icon.png" />
     <Content Include="Assets\Ataque.png" />
     <Content Include="Assets\Carta.png" />
+    <Content Include="Assets\Dinero.png" />
+    <Content Include="Assets\Dorso.png" />
+    <Content Include="Assets\Jugador.png" />
     <Content Include="Assets\Mana.png" />
+    <Content Include="Assets\Mazo.png" />
+    <Content Include="Assets\Opciones.png" />
     <Content Include="Assets\Rareza_Comun.png" />
     <Content Include="Assets\Rareza_Epica.png" />
     <Content Include="Assets\Rareza_Limitada.png" />
     <Content Include="Assets\Rareza_MuyRara.png" />
     <Content Include="Assets\Rareza_Rara.png" />
+    <Content Include="Assets\Unidad.png" />
     <Content Include="Assets\Vida.png" />
     <Content Include="Assets\play_background.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -174,6 +180,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Quando-Regular.ttf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
