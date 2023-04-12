@@ -30,4 +30,24 @@ namespace TrabajoDSI2023G15
             //Mapa.Children.Last().SetValue(Canvas.TopProperty, Y - 25);
         }
     }
+
+    public class VMCardInfo : Carta
+    {
+        public Image Img;
+        public ContentControl CCImg;
+        public int Zoom;
+        public VMCardInfo(Carta card)
+        {
+            Nombre = card.Nombre;
+            Text = card.Text;
+            Imagen = card.Imagen;
+            CCImg = new ContentControl();
+            CCImg.Content = Img;
+            CCImg.UseSystemFocusVisuals = true;
+            //CCImg.Visibility = Windows.UI.Xaml.Visibility.Visible;//.Collapsed;
+            //Mapa.Children.Add(CCImg);
+            //Mapa.Children.Last().SetValue(Canvas.LeftProperty, X - 25);
+            //Mapa.Children.Last().SetValue(Canvas.TopProperty, Y - 25);
+        }
+    }
 }

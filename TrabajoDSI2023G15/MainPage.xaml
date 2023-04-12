@@ -77,7 +77,8 @@
                 Width="484"
                 Height="98"
                 FontSize="30"
-                FontWeight="Bold" />
+                FontWeight="Bold"
+                Click="Tienda_OnClick"/>
                 <Image Source="/Assets/shop_icon.png" Height="75" Canvas.Left="142" Canvas.Top="12"/>
             </Canvas>
             <Canvas Margin="40,75">
@@ -105,7 +106,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Click="Profile_OnClick" HorizontalAlignment="Right">
+            <Button Click="Options_OnClick" HorizontalAlignment="Right">
                 <Button.Template>
                     <ControlTemplate>
                         <Image Source="/Assets/Opciones.png" Height="90" Margin="50,0"/>

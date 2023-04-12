@@ -25,8 +25,48 @@ namespace TrabajoDSI2023G15
         {
             new Carta()
             {
-                Nombre = "Modelo",
-                Imagen = "Assets\\play_background.png",
+                Nombre = "Modelo 1",
+                Imagen = "Assets\\Carta.png",
+                Text = "Texto de ejemplo",
+                Mana = 3,
+                Vida = 3,
+                Ataque = 3,
+                Rareza = 3
+            },
+            new Carta()
+            {
+                Nombre = "Modelo 2",
+                Imagen = "Assets\\Carta.png",
+                Text = "Texto de ejemplo",
+                Mana = 3,
+                Vida = 3,
+                Ataque = 3,
+                Rareza = 3
+            },
+            new Carta()
+            {
+                Nombre = "Modelo 3",
+                Imagen = "Assets\\Carta.png",
+                Text = "Texto de ejemplo",
+                Mana = 3,
+                Vida = 3,
+                Ataque = 3,
+                Rareza = 3
+            },
+            new Carta()
+            {
+                Nombre = "Modelo 4",
+                Imagen = "Assets\\Carta.png",
+                Text = "Texto de ejemplo",
+                Mana = 3,
+                Vida = 3,
+                Ataque = 3,
+                Rareza = 3
+            },
+            new Carta()
+            {
+                Nombre = "Modelo 5",
+                Imagen = "Assets\\Carta.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -35,5 +75,10 @@ namespace TrabajoDSI2023G15
             }
 
         };
+
+        public static IList<Carta> GetAllCards()
+        {
+            return Cartas;
+        }
     } 
 }
