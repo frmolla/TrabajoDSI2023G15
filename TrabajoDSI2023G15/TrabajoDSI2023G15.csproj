@@ -120,13 +120,21 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
-    <Compile Include="Play.xaml.cs">
-      <DependentUpon>Play.xaml</DependentUpon>
+    <Compile Include="Collection.xaml.cs">
+      <DependentUpon>Collection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameInfo.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Play.xaml.cs">
+      <DependentUpon>Play.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -135,21 +143,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\background.png" />
+    <Content Include="Assets\back_icon.png" />
     <Content Include="Assets\card_icon%281%29.png" />
     <Content Include="Assets\card_icon.png" />
     <Content Include="Assets\Ataque.png" />
     <Content Include="Assets\Carta.png" />
     <Content Include="Assets\Dinero.png" />
     <Content Include="Assets\Dorso.png" />
+    <Content Include="Assets\exclamation_icon.png" />
     <Content Include="Assets\Jugador.png" />
     <Content Include="Assets\Mana.png" />
     <Content Include="Assets\Mazo.png" />
     <Content Include="Assets\Opciones.png" />
+    <Content Include="Assets\play_icon.png" />
+    <Content Include="Assets\profile_icon.png" />
     <Content Include="Assets\Rareza_Comun.png" />
     <Content Include="Assets\Rareza_Epica.png" />
     <Content Include="Assets\Rareza_Limitada.png" />
     <Content Include="Assets\Rareza_MuyRara.png" />
     <Content Include="Assets\Rareza_Rara.png" />
+    <Content Include="Assets\shop_icon.png" />
     <Content Include="Assets\Unidad.png" />
     <Content Include="Assets\Vida.png" />
     <Content Include="Assets\play_background.png" />
@@ -167,11 +180,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Collection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Play.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Profile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

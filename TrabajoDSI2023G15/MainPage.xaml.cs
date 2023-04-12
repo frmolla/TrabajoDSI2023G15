@@ -26,5 +26,25 @@ namespace TrabajoDSI2023G15
         {
             this.InitializeComponent();
         }
+
+        private void Play_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Play));
+        }
+
+        private void Collection_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Collection));
+        }
+        
+        private void Profile_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Profile));
+        }
+
+        private void Options_OnClick(object sender, RoutedEventArgs e)
+        {
+            //Frame.Navigate(typeof(Options));
+        }
     }
 }

@@ -20,11 +20,24 @@ namespace TrabajoDSI2023G15
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Play : Page
+    public sealed partial class Collection : Page
     {
-        public Play()
+        public Collection()
         {
             this.InitializeComponent();
+        }
+
+        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+
+        private void Rectangle_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
         }
     }
 }
