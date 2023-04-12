@@ -31,6 +31,9 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="1047" Grid.Row="1">
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
+                    <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
+                    <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
+                    <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
