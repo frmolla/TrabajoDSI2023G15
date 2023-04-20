@@ -26,5 +26,19 @@ namespace TrabajoDSI2023G15
         {
             this.InitializeComponent();
         }
+
+        private void SaveChanges_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+
     }
 }

@@ -73,11 +73,12 @@
 
 
             </Grid>
-            <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40">
+            <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
                 <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
             </Button>
 
-            <Button Background="#BFE61610" Canvas.Top="760" Canvas.Left="629" Width="540" Height="140" BorderBrush="#FFF4E86A" BorderThickness="4" Content="SAVE CHANGES" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFF4E86A"/>
+            <Button Background="#BFE61610" Canvas.Top="760" Canvas.Left="629" Width="540" Height="140" BorderBrush="#FFF4E86A" BorderThickness="4" 
+                    Content="SAVE CHANGES" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFF4E86A" Click="SaveChanges_OnClick"/>
 
         </Canvas>
 

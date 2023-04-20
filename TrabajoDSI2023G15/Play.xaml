@@ -21,7 +21,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Width="1047">
+                <StackPanel Name="PlayerBoard" Orientation="Horizontal"  HorizontalAlignment="Stretch" Width="1047">
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
@@ -29,7 +29,7 @@
 
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="1047" Grid.Row="1">
+                <StackPanel Name="EnemyBoard" Orientation="Horizontal" HorizontalAlignment="Stretch" Width="1047" Grid.Row="1">
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
                     <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
@@ -51,48 +51,40 @@
 
 
         <Button Content="SURRENDER" Foreground="#FFF4E86A" Margin="1589,970,0,0" VerticalAlignment="Top" Height="80" Width="310"
-                FontFamily="Quando" FontSize="25" BorderBrush="#FFF4E86A" BorderThickness="4,4,4,4" Background="#26F4E86A" Grid.Row="1"/>
-        <Button Margin="13,9,0,0" VerticalAlignment="Top" Background="#00000000" Grid.Row="1">
+                FontFamily="Quando" FontSize="25" BorderBrush="#FFF4E86A" BorderThickness="4,4,4,4" Background="#26F4E86A" Grid.Row="1"
+                Click="Surrender_OnClick"/>
+        <Button Margin="13,9,0,0" VerticalAlignment="Top" Background="#00000000" Grid.Row="1" Click="Options_OnClick">
             <Image Source="/Assets/Opciones.png" Height="63" Width="63"/>
         </Button>
 
         <Canvas Width="288" Height="147" Margin="24,810,1608,143">
-            <ProgressBar Value="12" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
+            <ProgressBar Value="{x:Bind life, Mode=OneWay}" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="21" Width="222" Height="20"/>
             <Image Source="/Assets/Vida.png" Canvas.Left="6" Canvas.Top="6" Width="50" Height="50"/>
-            <TextBlock Text="12" Canvas.Left="19" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.319"/>
-            <ProgressBar Value="4" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
+            <TextBlock Text="{x:Bind life, Mode=OneWay}" Canvas.Left="19" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.319"/>
+            <ProgressBar Value="{x:Bind mana, Mode=OneWay}" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="106" Width="222" Height="20"/>
             <Image Source="/Assets/Mana.png" Canvas.Left="6" Canvas.Top="91" Width="50" Height="50"/>
-            <TextBlock Text="4" Canvas.Left="25" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Text="{x:Bind mana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Canvas>
         <Canvas Width="288" Height="147" Margin="1618,19,14,914">
-            <ProgressBar Value="5" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
+            <ProgressBar Value="{x:Bind enemyMana, Mode=OneWay}" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="21" Width="222" Height="20"/>
             <Image Source="/Assets/Mana.png" Canvas.Left="6" Canvas.Top="6" Width="50" Height="50"/>
-            <TextBlock Text="5" Canvas.Left="25" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <ProgressBar Value="17" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
+            <TextBlock Text="{x:Bind enemyMana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ProgressBar Value="{x:Bind enemyLife, Mode=OneWay}" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="106" Width="222" Height="20"/>
             <Image Source="/Assets/Vida.png" Canvas.Left="6" Canvas.Top="91" Width="50" Height="50"/>
-            <TextBlock Text="17" Canvas.Left="19" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="{x:Bind enemyLife, Mode=OneWay}" Canvas.Left="19" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Canvas>
 
-        <StackPanel Orientation="Horizontal" Width="1140" Height="281" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Width="1140" Height="136" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0">
-            <Image Source="/Assets/Dorso.png" Width="188" Height="136" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Dorso.png" Width="188" Height="136" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Dorso.png" Width="188" Height="136" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Dorso.png" Width="188" Height="136" Margin="20,0,20,0"/>
-            <Image Source="/Assets/Dorso.png" Width="188" Height="136" Margin="20,0,20,0"/>
+        <StackPanel Name="Hand" Orientation="Horizontal" Width="1140" Height="281" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+            <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0" HorizontalAlignment="Center"/>
 
         </StackPanel>
 
+        <StackPanel Name="EnemyHand" Orientation="Horizontal" Width="1140" Height="136" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+        
     </Grid>
 </Page>
