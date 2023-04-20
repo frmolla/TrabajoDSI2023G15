@@ -8,103 +8,105 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
-        </Grid.Background>
-        <Rectangle Fill="DarkRed" Stroke="Goldenrod" StrokeThickness="6" Opacity="0.7" Width="1798" Height="950" Margin="61,65,61,65"/>
-        <Canvas Width="1798" Height="950" Margin="61,65,61,65">
-            <StackPanel Orientation="Horizontal" BorderThickness="6" BorderBrush="#FFF4E86A" Canvas.Top="30" Canvas.Left="30" Width="484" Height="98">
-                <Image Source="/Assets/Tienda.png" Width="90" Height="80" Margin="20,0"/>
-                <TextBlock Text="Shop" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="100,0,0,0" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Canvas.Top="160" Canvas.Left="40">
-                <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
-                <TextBlock Text="{x:Bind money, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
-            </StackPanel>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
+            </Grid.Background>
+            <Rectangle Fill="#FFD5403F" Stroke="#FFF4E86A" StrokeThickness="6" Opacity="0.7" Width="1798" Height="950" Margin="61,65,61,65"/>
+            <Canvas Width="1798" Height="950" Margin="61,65,61,65">
+                <StackPanel Orientation="Horizontal" BorderThickness="6" BorderBrush="#FFF4E86A" Canvas.Top="30" Canvas.Left="30" Width="484" Height="98">
+                    <Image Source="/Assets/Tienda.png" Width="90" Height="80" Margin="20,0"/>
+                    <TextBlock Text="Shop" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="100,0,0,0" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Top="160" Canvas.Left="40">
+                    <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
+                    <TextBlock Text="{x:Bind money, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Vertical" Canvas.Top="280" Canvas.Left="40">
-                <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FFAAAAAA">
-                    <TextBlock Text="Grey -> Common" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                <StackPanel Orientation="Vertical" Canvas.Top="280" Canvas.Left="40">
+                    <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FFAAAAAA">
+                        <TextBlock Text="Grey -> Common" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FF92D36E">
+                        <TextBlock Text="Green -> Rare" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FF4DD7FA">
+                        <TextBlock Text="Blue -> Very Rare" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FFB38DF7">
+                        <TextBlock Text="Grey -> Epic" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="81" Background="#FFFEC63D">
+                        <TextBlock Text="Grey -> Limited" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FF92D36E">
-                    <TextBlock Text="Green -> Rare" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FF4DD7FA">
-                    <TextBlock Text="Blue -> Very Rare" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="56" Background="#FFB38DF7">
-                    <TextBlock Text="Grey -> Epic" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" BorderThickness="2" BorderBrush="#FFD5403F" Width="242" Height="81" Background="#FFFEC63D">
-                    <TextBlock Text="Grey -> Limited" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Quando" FontSize="20" Foreground="#FFD5403F" Margin="10"/>
-                </StackPanel>
-            </StackPanel>
 
-            <Grid Canvas.Left="460" Canvas.Top="160" Width="1080" Height="700">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="4*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Canvas.Left="460" Canvas.Top="160" Width="1080" Height="700">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Vertical">
-                    <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_0">
-                        <Image Source="/Assets/Sobre_Comun.png" Width="200" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                        <TextBlock Text="{x:Bind precios[0]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                    <StackPanel Orientation="Vertical">
+                        <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_0">
+                            <Image Source="/Assets/Sobre_Comun.png" Width="200" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
+                            <TextBlock Text="{x:Bind precios[0]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Column="1">
-                    <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_1">
-                        <Image Source="/Assets/Sobre_Raro.png" Width="200" Height="200"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                        <TextBlock Text="{x:Bind precios[1]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_1">
+                            <Image Source="/Assets/Sobre_Raro.png" Width="200" Height="200"/>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
+                            <TextBlock Text="{x:Bind precios[1]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Column="2">
-                    <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_2">
-                        <Image Source="/Assets/Sobre_MuyRaro.png" Width="200" Height="200"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                        <TextBlock Text="{x:Bind precios[2]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                        <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_2">
+                            <Image Source="/Assets/Sobre_MuyRaro.png" Width="200" Height="200"/>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
+                            <TextBlock Text="{x:Bind precios[2]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Column="3">
-                    <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_3">
-                        <Image Source="/Assets/Sobre_Epico.png" Width="200" Height="200"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                        <TextBlock Text="{x:Bind precios[3]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="3">
+                        <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Center" Click="Shop_OnClick" Name = "Shop_3">
+                            <Image Source="/Assets/Sobre_Epico.png" Width="200" Height="200"/>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
+                            <TextBlock Text="{x:Bind precios[3]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="4">
-                    <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Left" Margin="340,0,0,0" Click="Shop_OnClick" Name = "Shop_4">
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="4">
+                        <Button Background="#00000000" BorderThickness="0,0,0,0" HorizontalAlignment="Left" Margin="340,0,0,0" Click="Shop_OnClick" Name = "Shop_4">
                             <Image Source="/Assets/Sobre_Limitado.png" Width="320" Height="300" Canvas.Top="10" Canvas.Left="100"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
-                        <TextBlock Text="{x:Bind precios[4]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="42" Foreground="#FFF4E86A" Margin="20"/>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
+                            <TextBlock Text="{x:Bind precios[4]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="42" Foreground="#FFF4E86A" Margin="20"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
-            </Grid>
+                </Grid>
 
-            <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
-                <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
-            </Button>
-        </Canvas>
+                <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
+                    <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
+                </Button>
+            </Canvas>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Page>

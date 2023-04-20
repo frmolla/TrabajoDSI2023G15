@@ -8,79 +8,81 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
-        </Grid.Background>
-        <Rectangle Fill="DarkRed" Stroke="Goldenrod" StrokeThickness="6" Opacity="0.7" Width="1798" Height="950" Margin="61,65,61,65"/>
-        <Canvas Width="1798" Height="950" Margin="61,65,61,65">
-            <StackPanel Orientation="Horizontal" BorderThickness="6" BorderBrush="#FFF4E86A" Canvas.Top="30" Canvas.Left="30" Width="484" Height="98">
-                <Image Source="/Assets/Opciones.png" Width="90" Height="80" Margin="20,0"/>
-                <TextBlock Text="OPTIONS" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="60,0,0,0" FontWeight="Bold"/>
-            </StackPanel>
-
-            <Grid Canvas.Left="49" Canvas.Top="170"  Width="1700" Height="580">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="4*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="100" Grid.ColumnSpan="2">
-                    <TextBlock Text="GRAPHICS" HorizontalAlignment="Center" Margin="20" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
+            </Grid.Background>
+            <Rectangle Fill="#d5403f" Stroke="#FFF4E86A" StrokeThickness="6" Opacity="0.7" Width="1798" Height="950" Margin="61,65,61,65"/>
+            <Canvas Width="1798" Height="950" Margin="61,65,61,65">
+                <StackPanel Orientation="Horizontal" BorderThickness="6" BorderBrush="#FFF4E86A" Canvas.Top="30" Canvas.Left="30" Width="484" Height="98">
+                    <Image Source="/Assets/Opciones.png" Width="90" Height="80" Margin="20,0"/>
+                    <TextBlock Text="OPTIONS" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="60,0,0,0" FontWeight="Bold"/>
                 </StackPanel>
 
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="100" Grid.Column="2" Grid.ColumnSpan="2">
-                    <TextBlock Text="SOUND" HorizontalAlignment="Center" Margin="20" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
+                <Grid Canvas.Left="49" Canvas.Top="170"  Width="1700" Height="580">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1">
-                    <TextBlock Text="RESOLUTION" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <DropDownButton HorizontalAlignment="Center" Content="1920 x 1080" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2">
-                    <TextBlock Text="QUALITY" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <DropDownButton HorizontalAlignment="Center" Content="High" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3">
-                    <TextBlock Text="FULLSCREEN" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <CheckBox HorizontalAlignment="Center" Content="ENABLED" Grid.Row="3" Grid.Column="1" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" IsChecked="True"/>
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="100" Grid.ColumnSpan="2">
+                        <TextBlock Text="GRAPHICS" HorizontalAlignment="Center" Margin="20" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="100" Grid.Column="2" Grid.ColumnSpan="2">
+                        <TextBlock Text="SOUND" HorizontalAlignment="Center" Margin="20" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1">
+                        <TextBlock Text="RESOLUTION" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <DropDownButton HorizontalAlignment="Center" Content="1920 x 1080" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2">
+                        <TextBlock Text="QUALITY" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <DropDownButton HorizontalAlignment="Center" Content="High" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3">
+                        <TextBlock Text="FULLSCREEN" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <CheckBox HorizontalAlignment="Center" Content="ENABLED" Grid.Row="3" Grid.Column="1" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" IsChecked="True"/>
 
 
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1" Grid.Column="2">
-                    <TextBlock Text="MASTER VOLUME" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <Slider  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="84" Width="300" Foreground="#FFFF3823"/>
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2" Grid.Column="2">
-                    <TextBlock Text="SOUND EFFECTS" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <Slider  Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="24" Width="300" Foreground="#FFFF3823"/>
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1" Grid.Column="2">
+                        <TextBlock Text="MASTER VOLUME" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Slider  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="84" Width="300" Foreground="#FFFF3823"/>
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2" Grid.Column="2">
+                        <TextBlock Text="SOUND EFFECTS" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Slider  Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="24" Width="300" Foreground="#FFFF3823"/>
 
-                <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3" Grid.Column="2">
-                    <TextBlock Text="MUSIC" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
-                </StackPanel>
-                <Slider  Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="44" Width="300" Foreground="#FFFF3823"/>
-
-
+                    <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3" Grid.Column="2">
+                        <TextBlock Text="MUSIC" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Slider  Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="44" Width="300" Foreground="#FFFF3823"/>
 
 
-            </Grid>
-            <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
-                <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
-            </Button>
 
-            <Button Background="#BFE61610" Canvas.Top="760" Canvas.Left="629" Width="540" Height="140" BorderBrush="#FFF4E86A" BorderThickness="4" 
+
+                </Grid>
+                <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
+                    <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
+                </Button>
+
+                <Button Background="#BFE61610" Canvas.Top="760" Canvas.Left="629" Width="540" Height="140" BorderBrush="#FFF4E86A" BorderThickness="4" 
                     Content="SAVE CHANGES" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFF4E86A" Click="SaveChanges_OnClick"/>
 
-        </Canvas>
+            </Canvas>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Page>

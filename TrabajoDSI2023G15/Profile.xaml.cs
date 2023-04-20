@@ -58,7 +58,7 @@ namespace TrabajoDSI2023G15
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
         {
-            //Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(Opciones));
         }
 
         private void BackButton_OnClick(object sender, RoutedEventArgs e)

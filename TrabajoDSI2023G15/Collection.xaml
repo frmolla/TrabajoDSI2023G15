@@ -32,48 +32,38 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Margin="0,0,-443,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="453"/>
-            <ColumnDefinition Width="847"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1100"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
-        </Grid.Background>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
+            </Grid.Background>
 
-        <StackPanel Grid.ColumnSpan="2">
-            <Canvas>
-                <Grid Height="998" Width="1300" HorizontalAlignment="Center" VerticalAlignment="Top">
-                    <Rectangle Margin="40"
+
+            <Rectangle Margin="40"
                     Fill="#d5403f"
                     Opacity="0.8"
                     StrokeThickness="8"
                     Stroke="#f4e86a"/>
-                </Grid>
-                <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Center" 
+
+            <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                  CanDragItems="True" DragItemsStarting="CollectionDrag_Starting" DragOver="CollectionDrag_Over" AllowDrop="True" Drop="CollectionDrop"
                 Margin="100,250"
                 ItemsSource= "{x:Bind ListaCartas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                </ListView>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
 
-                <ListView x:Name="ImageGridView2" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="100,550"
-                ItemsSource= "{x:Bind ListaCartas}"
-                ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                </ListView>
-
+            <Canvas>
                 <Rectangle Width="484" Height="98" 
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Left" 
@@ -85,23 +75,20 @@
                 <TextBlock Text="COLLECTION" FontSize="40" Foreground="#f4e86a" FontFamily="Quando" FontWeight="Bold" Canvas.Left="212" Canvas.Top="116" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Image Source="/Assets/card_icon(1).png" Height="75" Margin="114,102,1308,823"/>
             </Canvas>
-        </StackPanel>
 
-        <StackPanel Grid.Column="2">
-            <Canvas>
-                <Grid Height="998" Width="637" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="-6">
-                    <Rectangle Margin="40"
-                    Fill="#d5403f"
-                    Opacity="0.8"
-                    StrokeThickness="8"
-                    Stroke="#f4e86a" Canvas.Left="33" Canvas.Top="46"/>
-                </Grid>
+            <Rectangle Margin="40" Grid.Column="2"
+                   Fill="#d5403f"
+                   Opacity="0.8"
+                   StrokeThickness="8"
+                   Stroke="#f4e86a"
+                   Stretch="Fill"/>
 
-                <ListView x:Name="ImageGridViewDeck" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250"
+            <ListView x:Name="ImageGridViewDeck" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250" Grid.Column="2"
+                  CanDragItems="True" DragItemsStarting="DeckDrag_Starting" DragOver="DeckDrag_Over" AllowDrop="True" Drop="DeckDrop"
                 ItemsSource= "{x:Bind ListaCartas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplateDeck}"/>
-                
-                <Rectangle Width="454" Height="90" 
+
+            <Rectangle Width="454" Height="90" Grid.Column="2"
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Left" 
                 Fill="#d5403f" 
@@ -109,13 +96,12 @@
                 Opacity="0.8"
                 StrokeThickness="8"
                 Stroke="#f4e86a"/>
+            <Canvas Grid.Column="2" HorizontalAlignment="Stretch">
                 <TextBlock Text="DECK" FontSize="40" Foreground="#f4e86a" FontFamily="Quando" FontWeight="Bold" Canvas.Left="244" Canvas.Top="111" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Image Source="/Assets/card_icon(1).png" Height="75" Canvas.Left="114" Canvas.Top="98"/>
             </Canvas>
-        </StackPanel>
 
-
-        <Button x:Name="BackButton"
+            <Button x:Name="BackButton"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         IsEnabled="{x:Bind Frame.CanGoBack, Mode=OneWay}" 
                         ToolTipService.ToolTip="Back" 
@@ -124,5 +110,6 @@
                         Foreground="#f4e86a"
                         FontSize="100"
                         Click="BackButton_OnClick"/>
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Page>

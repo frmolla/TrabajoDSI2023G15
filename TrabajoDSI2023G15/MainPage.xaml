@@ -8,32 +8,35 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <!--WINUI 3-->
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
-        </Grid.Background>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <!--WINUI 3-->
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill"/>
+            </Grid.Background>
 
 
-        <Polygon  
+            <Polygon  HorizontalAlignment="Left"
             Points="0,0 550,0 800,1000 0,1000"  
             Stroke="#f4e86a"
             StrokeThickness="6">
-            <Polygon.Fill>
-                <SolidColorBrush Color="#d5403f" Opacity="0.5"/>
-            </Polygon.Fill>
-        </Polygon>
+                <Polygon.Fill>
+                    <SolidColorBrush Color="#d5403f" Opacity="0.5"/>
+                </Polygon.Fill>
+            </Polygon>
 
-        <TextBlock Text="TITLE" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40" FontSize="100" Foreground="#f4e86a" FontWeight="Bold" FontFamily="Quando"/>
+            <TextBlock Text="TITLE" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40" FontSize="100" Foreground="#f4e86a" FontWeight="Bold" FontFamily="Quando"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="950,70,0,0">
-            <Image Source="/Assets/Dinero.png"  HorizontalAlignment="Left" Height="50" Margin="10"/>
-            <TextBlock x:Name="Money" Text="500" Foreground="#f4e86a" FontSize="50s" FontWeight="Bold"/>
-        </StackPanel>
-        
-        <StackPanel VerticalAlignment="Center">
-            <Canvas Margin="30,0,0,93">
-                <Button Content="PLAY" 
+            <Canvas HorizontalAlignment="Right" Margin="1500,0,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Left="-362" Canvas.Top="66">
+                    <TextBlock x:Name="Money" Text="500" Foreground="#f4e86a" FontSize="50s" FontWeight="Bold"/>
+                    <Image Source="/Assets/Dinero.png" Height="50"/>
+                </StackPanel>
+            </Canvas>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Canvas Margin="30,0,0,93">
+                    <Button Content="PLAY" 
                 Margin="40, 0"       
                 Background="#d5403f"
                 Opacity="0.9"
@@ -47,10 +50,10 @@
                 FontSize="30"
                 FontWeight="Bold"
                 Click="Play_OnClick"/>
-                <Image Source="/Assets/play_icon.png" Height="65" Canvas.Left="76" Canvas.Top="25"/>
-            </Canvas>
-            <Canvas Margin="30,70">
-                <Button Content="COLLECTION &amp; DECK"
+                    <Image Source="/Assets/play_icon.png" Height="65" Canvas.Left="76" Canvas.Top="25"/>
+                </Canvas>
+                <Canvas Margin="30,70">
+                    <Button Content="COLLECTION &amp; DECK"
                 Margin="80, 0"
                 Background="#d5403f"
                 Foreground="#f4e86a"
@@ -63,10 +66,10 @@
                 FontSize="30"
                 FontWeight="Bold"
                 Click="Collection_OnClick"/>
-                <Image Source="/Assets/card_icon(1).png" Height="75" Canvas.Left="90" Canvas.Top="10"/>
-            </Canvas>
-            <Canvas Margin="30, 70">
-                <Button Content="SHOP"
+                    <Image Source="/Assets/card_icon(1).png" Height="75" Canvas.Left="90" Canvas.Top="10"/>
+                </Canvas>
+                <Canvas Margin="30, 70">
+                    <Button Content="SHOP"
                 Margin="120, 0"
                 Background="#d5403f"
                 Foreground="#f4e86a"
@@ -79,10 +82,10 @@
                 FontSize="30"
                 FontWeight="Bold"
                 Click="Tienda_OnClick"/>
-                <Image Source="/Assets/shop_icon.png" Height="75" Canvas.Left="142" Canvas.Top="12"/>
-            </Canvas>
-            <Canvas Margin="40,75">
-                <Button Content="QUIT"
+                    <Image Source="/Assets/shop_icon.png" Height="75" Canvas.Left="142" Canvas.Top="12"/>
+                </Canvas>
+                <Canvas Margin="40,75">
+                    <Button Content="QUIT"
                 Margin="160, 0"
                 Background="#d5403f"
                 Foreground="#f4e86a"
@@ -94,28 +97,28 @@
                 Height="98"
                 FontSize="30"
                 FontWeight="Bold"/>
-                <Image Source="/Assets/back_icon.png" Height="75" Canvas.Left="175" Canvas.Top="12"/>
-            </Canvas>
-        </StackPanel>
+                    <Image Source="/Assets/back_icon.png" Height="75" Canvas.Left="175" Canvas.Top="12"/>
+                </Canvas>
+            </StackPanel>
 
-        <StackPanel HorizontalAlignment="Right">
-            <Button Click="Profile_OnClick" HorizontalAlignment="Right">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="/Assets/profile_icon.png" Height="75" Margin="60"/>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Click="Options_OnClick" HorizontalAlignment="Right">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="/Assets/Opciones.png" Height="90" Margin="50,0"/>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </StackPanel>
-        
-        <!--<Canvas Margin="242,543,1058,166">
+            <StackPanel HorizontalAlignment="Right">
+                <Button Click="Profile_OnClick" HorizontalAlignment="Right">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Assets/profile_icon.png" Height="75" Margin="60"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Click="Options_OnClick" HorizontalAlignment="Right">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Assets/Opciones.png" Height="90" Margin="50,0"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+            <!--<Canvas Margin="242,543,1058,166">
             <ContentControl>
                 <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10">
                     <Image Source="/Assets/Carta.png"/>
@@ -132,5 +135,6 @@
                 </Canvas>
             </ContentControl>
         </Canvas>-->
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Page>
