@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -50,6 +51,11 @@ namespace TrabajoDSI2023G15
         private void Tienda_OnClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Tienda));
+        }
+
+        private void Exit_OnClick(object sender, RoutedEventArgs e)
+        {
+            CoreApplication.Exit();
         }
     }
 }

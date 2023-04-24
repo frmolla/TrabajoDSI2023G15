@@ -21,7 +21,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Canvas.Top="160" Canvas.Left="40">
                     <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
-                    <TextBlock Text="{x:Bind money, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                    <TextBlock Text="{x:Bind Money, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Canvas.Top="280" Canvas.Left="40">
@@ -60,7 +60,7 @@
                         </Button>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                            <TextBlock Text="{x:Bind precios[0]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                            <TextBlock Text="{x:Bind Prices[0]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1">
@@ -69,7 +69,7 @@
                         </Button>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                            <TextBlock Text="{x:Bind precios[1]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                            <TextBlock Text="{x:Bind Prices[1]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="2">
@@ -78,7 +78,7 @@
                         </Button>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                            <TextBlock Text="{x:Bind precios[2]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                            <TextBlock Text="{x:Bind Prices[2]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="3">
@@ -87,7 +87,7 @@
                         </Button>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Image Source="/Assets/Dinero.png" Width="40" Height="40"/>
-                            <TextBlock Text="{x:Bind precios[3]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
+                            <TextBlock Text="{x:Bind Prices[3]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" Margin="20"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="4">
@@ -96,7 +96,7 @@
                         </Button>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Image Source="/Assets/Dinero.png" Width="60" Height="60"/>
-                            <TextBlock Text="{x:Bind precios[4]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="42" Foreground="#FFF4E86A" Margin="20"/>
+                            <TextBlock Text="{x:Bind Prices[4]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Quando" FontSize="42" Foreground="#FFF4E86A" Margin="20"/>
                         </StackPanel>
                     </StackPanel>
 

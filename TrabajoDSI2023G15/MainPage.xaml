@@ -29,7 +29,7 @@
 
             <Canvas HorizontalAlignment="Right" Margin="1500,0,0,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Left="-362" Canvas.Top="66">
-                    <TextBlock x:Name="Money" Text="500" Foreground="#f4e86a" FontSize="50s" FontWeight="Bold"/>
+                    <TextBlock x:Name="Money" Text="{x:Bind local:GlobalVariables.Money, Mode=OneWay}" Foreground="#f4e86a" FontSize="50s" FontWeight="Bold"/>
                     <Image Source="/Assets/Dinero.png" Height="50"/>
                 </StackPanel>
             </Canvas>
@@ -96,7 +96,8 @@
                 Width="350"
                 Height="98"
                 FontSize="30"
-                FontWeight="Bold"/>
+                FontWeight="Bold"
+                Click="Exit_OnClick"/>
                     <Image Source="/Assets/back_icon.png" Height="75" Canvas.Left="175" Canvas.Top="12"/>
                 </Canvas>
             </StackPanel>

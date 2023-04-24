@@ -45,15 +45,25 @@
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1">
                         <TextBlock Text="RESOLUTION" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <DropDownButton HorizontalAlignment="Center" Content="1920 x 1080" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
+                    <ComboBox Name="ResolutionBox"  SelectionChanged="Resolution_SelectionChanged"  HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="-1" PlaceholderText="Default" PlaceholderForeground="#FFD5403F" FocusVisualSecondaryBrush="White">
+                        <ComboBoxItem Content="1920 x 1080"/>
+                        <ComboBoxItem Content="1680 x 950"/>
+                        <ComboBoxItem Content="1366 x 768"/>
+                        <ComboBoxItem Content="1280 x 720"/>
+                    </ComboBox>
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2">
                         <TextBlock Text="QUALITY" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <DropDownButton HorizontalAlignment="Center" Content="High" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f"/>
+                    <ComboBox HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="0">
+                        <ComboBoxItem Content="High"/>
+                        <ComboBoxItem Content="Medium"/>
+                        <ComboBoxItem Content="Low"/>
+                    </ComboBox>
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3">
                         <TextBlock Text="FULLSCREEN" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <CheckBox HorizontalAlignment="Center" Content="ENABLED" Grid.Row="3" Grid.Column="1" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" IsChecked="True"/>
+                    <CheckBox HorizontalAlignment="Center" Content="ENABLED" Grid.Row="3" Grid.Column="1" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" 
+                              IsChecked="False" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" x:Name="FullScreenCheck"/>
 
 
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1" Grid.Column="2">

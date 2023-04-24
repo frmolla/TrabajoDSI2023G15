@@ -18,24 +18,30 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TrabajoDSI2023G15
 {
+    public class GlobalVariables
+    {
+        public static int Money { get; set; }
+    }
+
+
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
     public sealed partial class Tienda : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        int money;
-        int[] precios;
-        Button[] shopButtons;
+        private int Money;
+        private int[] Prices;
+        private Button[] ShopButtons;
         public Tienda()
         {
             this.InitializeComponent();
-            money = 1200;
-            precios = new int[] { 50, 100, 200, 400, 800 };
-            shopButtons = new Button[] { Shop_0, Shop_1, Shop_2, Shop_3, Shop_4 };
-            for (int i = 0; i < precios.Length; i++)
+            Money = GlobalVariables.Money;
+            Prices = new int[] { 50, 100, 200, 400, 800 };
+            ShopButtons = new Button[] { Shop_0, Shop_1, Shop_2, Shop_3, Shop_4 };
+            for (int i = 0; i < Prices.Length; i++)
             {
-                shopButtons[i].IsEnabled = money >= precios[i];
+                ShopButtons[i].IsEnabled = Money >= Prices[i];
             }
         }
 
@@ -44,10 +50,10 @@ namespace TrabajoDSI2023G15
         {
             Button but = sender as Button;
             int id = (int)(but.Name[but.Name.Length-1]);
-            money -= precios[id - '0'];
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(money)));
-            for (int i = 0; i < precios.Length; i++){
-                shopButtons[i].IsEnabled = money>=precios[i];
+            Money -= Prices[id - '0'];
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Money)));
+            for (int i = 0; i < Prices.Length; i++){
+                ShopButtons[i].IsEnabled = Money >= Prices[i];
             }
         }
 
@@ -55,6 +61,7 @@ namespace TrabajoDSI2023G15
         {
             if (Frame.CanGoBack)
             {
+                GlobalVariables.Money = Money;
                 Frame.GoBack();
             }
         }
