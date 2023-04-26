@@ -11,11 +11,23 @@
     <Page.Resources>
         <DataTemplate x:Key="ImageGridView_DefaultItemTemplate"
                       x:DataType="local:VMCardInfo">
-            <Grid Height="200" Width="150" Margin="25">
+            <Grid Width="150" Margin="25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{x:Bind Imagen}" VerticalAlignment="Center" Width="{Binding ElementName=ImageSlider}"/>
+                <Image Source="{x:Bind Imagen}" VerticalAlignment="Center" Margin="0,20,0,0"/>
+                <TextBlock Text="{x:Bind Nombre}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="0,30,0,0"/>
+                <TextBlock Text="{x:Bind Text}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Margin="0,100,0,0"/>
+                
+                <Image Source="{x:Bind ManaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-20,0,0,0"/>
+                <TextBlock Text="{x:Bind Mana}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="-2,11,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind AtaqueImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-20,55,0,0"/>
+                <TextBlock Text="{x:Bind Ataque}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="-2,66,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind VidaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-20,110,0,0"/>
+                <TextBlock Text="{x:Bind Vida}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="-2,121,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
             </Grid>
 
         </DataTemplate>
@@ -50,18 +62,20 @@
                     Opacity="0.8"
                     StrokeThickness="8"
                     Stroke="#f4e86a"/>
-
-            <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
+            
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
                   CanDragItems="True" DragItemsStarting="CollectionDrag_Starting" DragOver="CollectionDrag_Over" AllowDrop="True" Drop="CollectionDrop"
-                Margin="100,250"
+                Margin="100,250" MaxWidth="1000"
                 ItemsSource= "{x:Bind ListaCartas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"></StackPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </ScrollViewer>
 
             <Canvas>
                 <Rectangle Width="484" Height="98" 
@@ -85,7 +99,7 @@
 
             <ListView x:Name="ImageGridViewDeck" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250" Grid.Column="2"
                   CanDragItems="True" DragItemsStarting="DeckDrag_Starting" DragOver="DeckDrag_Over" AllowDrop="True" Drop="DeckDrop"
-                ItemsSource= "{x:Bind ListaCartas}"
+                ItemsSource= "{x:Bind ListaCartasDeck}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplateDeck}"/>
 
             <Rectangle Width="454" Height="90" Grid.Column="2"

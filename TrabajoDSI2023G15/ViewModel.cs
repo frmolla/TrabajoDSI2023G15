@@ -41,6 +41,12 @@ namespace TrabajoDSI2023G15
             Nombre = card.Nombre;
             Text = card.Text;
             Imagen = card.Imagen;
+            Mana= card.Mana;
+            Ataque = card.Ataque;
+            Vida= card.Vida;
+            ManaImagen = card.ManaImagen;
+            AtaqueImagen= card.AtaqueImagen;
+            VidaImagen = card.VidaImagen;
             CCImg = new ContentControl();
             CCImg.Content = Img;
             CCImg.UseSystemFocusVisuals = true;
