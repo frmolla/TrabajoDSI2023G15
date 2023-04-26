@@ -36,9 +36,9 @@ namespace TrabajoDSI2023G15
                 VidaImagen = "Assets\\Vida.png",
                 RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
-                Mana = 3,
-                Vida = 3,
-                Ataque = 3,
+                Mana = 4,
+                Vida = 5,
+                Ataque = 2,
                 Rareza = 3
             },
             new Carta()
@@ -48,11 +48,11 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
-                RarezaImagen = "Assets\\Rareza_Comun.png",
+                RarezaImagen = "Assets\\Rareza_Epica.png",
                 Text = "Texto de ejemplo",
-                Mana = 3,
-                Vida = 3,
-                Ataque = 3,
+                Mana = 7,
+                Vida = 8,
+                Ataque = 7,
                 Rareza = 3
             },
             new Carta()
@@ -62,11 +62,11 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",            
                 VidaImagen = "Assets\\Vida.png",
-                RarezaImagen = "Assets\\Rareza_Comun.png",
+                RarezaImagen = "Assets\\Rareza_Rara.png",
                 Text = "Texto de ejemplo",
-                Mana = 3,
-                Vida = 3,
-                Ataque = 3,
+                Mana = 1,
+                Vida = 1,
+                Ataque = 2,
                 Rareza = 3
             },
             new Carta()
@@ -76,7 +76,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
-                RarezaImagen = "Assets\\Rareza_Comun.png",
+                RarezaImagen = "Assets\\Rareza_MuyRara.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -90,11 +90,11 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
-                RarezaImagen = "Assets\\Rareza_Comun.png",
+                RarezaImagen = "Assets\\Rareza_Limitada.png",
                 Text = "Texto de ejemplo",
-                Mana = 3,
-                Vida = 3,
-                Ataque = 3,
+                Mana = 10,
+                Vida = 15,
+                Ataque = 13,
                 Rareza = 3
             }
 

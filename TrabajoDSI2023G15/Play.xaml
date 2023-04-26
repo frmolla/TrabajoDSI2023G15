@@ -8,6 +8,43 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <DataTemplate x:Key="MyHand_Template"
+                      x:DataType="local:VMCardInfo">
+            <Grid Width="188" Height="281" Margin="20,0,20,0">
+                <Image Source="{x:Bind Imagen}" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                <TextBlock Text="{x:Bind Nombre}" Foreground="#f4e86a" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="0,18,0,0"/>
+                <TextBlock Text="{x:Bind Text}" Foreground="#f4e86a" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Margin="0,150,0,0"/>
+
+                <Image Source="{x:Bind ManaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-15,0,0,0"/>
+                <TextBlock Text="{x:Bind Mana}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="2,12,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind AtaqueImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-15,55,0,0"/>
+                <TextBlock Text="{x:Bind Ataque}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="1,65,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind VidaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-16,110,0,0"/>
+                <TextBlock Text="{x:Bind Vida}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="2,120,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind RarezaImagen}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="45" Width="45" Margin="18,0"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="MyUnits_Template"
+                      x:DataType="local:VMCardInfo">
+            <Grid Width="214" Height="216" Margin="24,0,24,0">
+                <Image Source="/Assets/Unidad.png" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                <TextBlock Text="{x:Bind Nombre}" Foreground="#f4e86a" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="0,25,0,0"/>
+                <Image Source="{x:Bind AtaqueImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="0,168,0,0"/>
+                <TextBlock Text="{x:Bind Ataque}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="16,178,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind VidaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="169,174,0,0"/>
+                <TextBlock Text="{x:Bind Vida}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="187,183,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind RarezaImagen}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="45" Width="45" Margin="20,0"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
     <Viewbox Stretch="Fill">
         <Grid>
             <Image Source="/Assets/play_background.png" Margin="-442,-750,-717,-570" Grid.RowSpan="2"/>
@@ -15,27 +52,31 @@
             <Line Stroke="Goldenrod" StrokeThickness="4" X1="302" X2 ="1618" Y1 ="470" Y2="470" Grid.RowSpan="2"/>
             <Canvas Margin="302,171,302,314">
                 <Image Source="/Assets/Jugador.png" Width="110" Height="110" Canvas.Left = "20" Canvas.Top="465" />
-                <Image Source="/Assets/Jugador.png" Width="110" Height="110" Canvas.Left="1186" Canvas.Top="20"/>
+                <Image Source="/Assets/Jugador.png" Width="110" Height="110" Canvas.Left="1186" Canvas.Top="20" DragOver="EnemyDrag_Over" AllowDrop="True" Drop="EnemyDrop"/>
                 <Grid Canvas.Left="135" Canvas.Top="25" Height="552" VerticalAlignment="Top" Width="1047" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Name="PlayerBoard" Orientation="Horizontal"  HorizontalAlignment="Stretch" Width="1047">
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0"/>
+                    <ListView x:Name="PlayerBoard" Width="1047" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                        CanDragItems="True" DragItemsStarting="BattlefieldDrag_Starting" DragOver="BattlefieldDrag_Over" AllowDrop="True" Drop="BattlefieldDrop"
+                        ItemsSource= "{x:Bind MyUnits}" ItemTemplate= "{StaticResource MyUnits_Template}" Grid.Row="1">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
 
-                    </StackPanel>
-
-                    <StackPanel Name="EnemyBoard" Orientation="Horizontal" HorizontalAlignment="Stretch" Width="1047" Grid.Row="1">
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
-                        <Image Source="/Assets/Unidad.png" Width="214" Height="216" Margin="24,0,24,0" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                    <ListView x:Name="Enemy" Width="1047" TabIndex="3" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                        ItemsSource= "{x:Bind EnemyUnits}" ItemTemplate= "{StaticResource MyUnits_Template}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
                 </Grid>
 
             </Canvas>
@@ -59,31 +100,34 @@
             </Button>
 
             <Canvas Width="288" Height="147" Margin="24,810,1608,143">
-                <ProgressBar Value="{x:Bind life, Mode=OneWay}" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
+                <ProgressBar Value="{x:Bind myLife, Mode=OneWay}" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="21" Width="222" Height="20"/>
                 <Image Source="/Assets/Vida.png" Canvas.Left="6" Canvas.Top="6" Width="50" Height="50"/>
-                <TextBlock Text="{x:Bind life, Mode=OneWay}" Canvas.Left="19" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.319"/>
-                <ProgressBar Value="{x:Bind mana, Mode=OneWay}" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
+                <TextBlock Text="{x:Bind myLife, Mode=OneWay}" Canvas.Left="19" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ProgressBar Value="{x:Bind myMana, Mode=OneWay}" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="106" Width="222" Height="20"/>
                 <Image Source="/Assets/Mana.png" Canvas.Left="6" Canvas.Top="91" Width="50" Height="50"/>
-                <TextBlock Text="{x:Bind mana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Text="{x:Bind myMana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Canvas>
             <Canvas Width="288" Height="147" Margin="1618,19,14,914">
                 <ProgressBar Value="{x:Bind enemyMana, Mode=OneWay}" Maximum="10" Foreground="CornflowerBlue"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="21" Width="222" Height="20"/>
                 <Image Source="/Assets/Mana.png" Canvas.Left="6" Canvas.Top="6" Width="50" Height="50"/>
-                <TextBlock Text="{x:Bind enemyMana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Bind enemyMana, Mode=OneWay}" Canvas.Left="25" Canvas.Top="19" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ProgressBar Value="{x:Bind enemyLife, Mode=OneWay}" Maximum="20" Foreground="OrangeRed"  BorderBrush="Goldenrod" BorderThickness="2"
                          HorizontalAlignment="Left" Canvas.Left="61" Canvas.Top="106" Width="222" Height="20"/>
                 <Image Source="/Assets/Vida.png" Canvas.Left="6" Canvas.Top="91" Width="50" Height="50"/>
                 <TextBlock Text="{x:Bind enemyLife, Mode=OneWay}" Canvas.Left="19" Canvas.Top="104" FontFamily="Quando" FontSize="20" Foreground="#FFFEC63D" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Canvas>
 
-            <StackPanel Name="Hand" Orientation="Horizontal" Width="1140" Height="281" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,20">
-                <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0" HorizontalAlignment="Center"/>
-                <Image Source="/Assets/Carta.png" Width="188" Height="281" Margin="20,0,20,0" HorizontalAlignment="Center"/>
-
-            </StackPanel>
+            <ListView x:Name="Hand" Width="1140" Height="281" TabIndex="1" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                CanDragItems="True" DragItemsStarting="HandDrag_Starting" ItemsSource= "{x:Bind MyHand}" ItemTemplate= "{StaticResource MyHand_Template}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
 
             <StackPanel Name="EnemyHand" Orientation="Horizontal" Width="1140" Height="136" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
 

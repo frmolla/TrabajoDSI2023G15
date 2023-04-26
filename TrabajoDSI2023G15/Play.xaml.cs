@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Security.Cryptography;
@@ -26,23 +28,143 @@ namespace TrabajoDSI2023G15
     public sealed partial class Play : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        int life, mana, enemyLife, enemyMana;
-        Carta[] myHand;
+        public ObservableCollection<VMCardInfo> MyHand { get; } = new ObservableCollection<VMCardInfo>();
+        public ObservableCollection<VMCardInfo> MyUnits { get; } = new ObservableCollection<VMCardInfo>();
+        public ObservableCollection<VMCardInfo> EnemyUnits { get; } = new ObservableCollection<VMCardInfo>();
+
+        int myLife, myMana, enemyLife, enemyMana;
+        int myHandSize;
         int enemyHandSize;
+        int enemyUnitNumber;
         public Play()
         {
             this.InitializeComponent();
-            life = 15; mana = 10;  enemyLife= 19; enemyMana = 6;
-            enemyHandSize = new Random().Next(0,5);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            myLife = 15; myMana = 10; enemyLife = 19; enemyMana = 6;
+            enemyHandSize = new Random().Next(1, 5);
+            myHandSize = new Random().Next(1, 5);
+            enemyUnitNumber = new Random().Next(1, 4);
+
             for (int i = 0; i < enemyHandSize; i++)
             {
                 Image img = new Image();
-                img.Source  = new BitmapImage(new Uri("ms-appx:///Assets/Dorso.png"));
+                img.Source = new BitmapImage(new Uri("ms-appx:///Assets/Dorso.png"));
                 img.Width = 188;
                 img.Height = 136;
-                img.Margin = new Thickness(20,0,20,0);
+                img.Margin = new Thickness(20, 0, 20, 0);
                 EnemyHand.Children.Add(img);
             }
+            for (int i = 0; i < myHandSize; i++)
+            {
+                int card = new Random().Next(0, Model.GetAllCards().Count);
+                VMCardInfo VMitem = new VMCardInfo(Model.GetAllCards()[i]);
+                MyHand.Add(VMitem);
+            }
+            for (int i = 0; i < enemyUnitNumber; i++)
+            {
+                int card = new Random().Next(0, Model.GetAllCards().Count);
+                VMCardInfo VMitem = new VMCardInfo(Model.GetAllCards()[i]);
+                EnemyUnits.Add(VMitem);
+            }
+
+            base.OnNavigatedTo(e);
+        }
+        private void HandDrag_Starting(object sender, DragItemsStartingEventArgs e)
+        {
+            if (MyHand.Count >= 1)
+            {
+                VMCardInfo Item = e.Items[0] as VMCardInfo;
+
+                var index = MyHand.IndexOf(Item);
+
+                e.Data.SetData("nombre", Item.Nombre.ToString());
+                e.Data.SetData("text", Item.Text.ToString());
+                e.Data.SetData("img", Item.Imagen.ToString());
+                e.Data.SetData("imgMana", Item.ManaImagen.ToString());
+                e.Data.SetData("imgAtaque", Item.AtaqueImagen.ToString());
+                e.Data.SetData("imgVida", Item.VidaImagen.ToString());
+                e.Data.SetData("imgRareza", Item.RarezaImagen.ToString());
+                e.Data.SetData("mana", Item.Mana);
+                e.Data.SetData("vida", Item.Vida);
+                e.Data.SetData("ataque", Item.Ataque);
+                e.Data.SetData("rareza", Item.Rareza);
+                e.Data.SetData("indice", index);
+                e.Data.SetData("unidad", false);
+
+            }
+        }
+        private async void BattlefieldDrag_Over(object sender, DragEventArgs e)
+        {
+            var mana = await e.DataView.GetDataAsync("mana");
+            if ((int)mana <= myMana)
+                e.AcceptedOperation = DataPackageOperation.Move;
+        }
+
+        private async void BattlefieldDrop(object sender, DragEventArgs e)
+        {
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                var nombre = await e.DataView.GetDataAsync("nombre");
+                var img = await e.DataView.GetDataAsync("img");
+                var imgMana = await e.DataView.GetDataAsync("imgMana");
+                var imgAtaque = await e.DataView.GetDataAsync("imgAtaque");
+                var imgVida = await e.DataView.GetDataAsync("imgVida");
+                var imgRareza = await e.DataView.GetDataAsync("imgRareza");
+                var text = await e.DataView.GetDataAsync("text");
+                var mana = await e.DataView.GetDataAsync("mana");
+                var vida = await e.DataView.GetDataAsync("vida");
+                var ataque = await e.DataView.GetDataAsync("ataque");
+                var rareza = await e.DataView.GetDataAsync("rareza");
+                var indice = await e.DataView.GetDataAsync("indice");
+
+                Carta c = new Carta();
+                c.Nombre = nombre.ToString();
+                c.Imagen = img.ToString();
+                c.ManaImagen = imgMana.ToString();
+                c.AtaqueImagen = imgAtaque.ToString();
+                c.VidaImagen = imgVida.ToString();
+                c.RarezaImagen = imgRareza.ToString();
+                c.Text = text.ToString();
+                c.Mana = (int)mana;
+                c.Vida = (int)vida;
+                c.Ataque = (int)ataque;
+                c.Rareza = (int)rareza;
+                VMCardInfo vmc = new VMCardInfo(c);
+
+                vmc.CCImg = new ContentControl();
+                vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+                vmc.CCImg.UseSystemFocusVisuals = true;
+
+                MyHand.RemoveAt((int)indice);
+                MyUnits.Add(vmc);
+                myMana -= (int)mana;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(myMana)));
+
+            }
+        }
+
+        private void BattlefieldDrag_Starting(object sender, DragItemsStartingEventArgs e)
+        {
+            VMCardInfo Item = e.Items[0] as VMCardInfo;
+            e.Data.SetData("ataque", Item.Ataque);
+            e.Data.SetData("unidad", true);
+        }
+
+        private async void EnemyDrag_Over(object sender, DragEventArgs e)
+        {
+            var unidad = await e.DataView.GetDataAsync("unidad");
+            if ((bool)unidad)
+                e.AcceptedOperation = DataPackageOperation.Move;
+        }
+
+        private async void EnemyDrop(object sender, DragEventArgs e)
+        {
+            var ataque = await e.DataView.GetDataAsync("ataque");
+            enemyLife -= (int)ataque;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(enemyLife)));
         }
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
