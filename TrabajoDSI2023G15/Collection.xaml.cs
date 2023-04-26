@@ -30,9 +30,15 @@ namespace TrabajoDSI2023G15
     public sealed partial class Collection : Page
     {
 
-        public ObservableCollection<VMCardInfo> ListaCartas { get; } = new ObservableCollection<VMCardInfo>();
-        public ObservableCollection<VMCardInfo> ListaCartasDeck { get; } = new ObservableCollection<VMCardInfo>();
+        public static class GlobalList
+        {
+            public static ObservableCollection<VMCardInfo> ListaCartas { get; } = new ObservableCollection<VMCardInfo>();
+            public static ObservableCollection<VMCardInfo> ListaCartasDeck { get; } = new ObservableCollection<VMCardInfo>();
+        }
 
+
+        public ObservableCollection<VMCardInfo> localListaCartas = GlobalList.ListaCartas;
+        public ObservableCollection<VMCardInfo> localListaCartasDeck = GlobalList.ListaCartasDeck;
 
         public Collection()
         {
@@ -41,21 +47,30 @@ namespace TrabajoDSI2023G15
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            
             // Cosntruye las listas de ModelView a partir de la lista Modelo 
-            if (ListaCartas != null)
+            if (localListaCartas != null)
             {
-                foreach (Carta card in Model.GetAllCards())
+                if (localListaCartas.Count <= 0)
                 {
-                    VMCardInfo VMitem = new VMCardInfo(card);
-                    ListaCartas.Add(VMitem);
+                    foreach (Carta card in Model.GetAllCards())
+                    {
+                        VMCardInfo VMitem = new VMCardInfo(card);
+                        if (!localListaCartas.Contains(VMitem))
+                            localListaCartas.Add(VMitem);
+                    }
                 }
             }
-            if (ListaCartas != null)
+            if (localListaCartasDeck != null)
             {
-                foreach (Carta card in Model.GetAllCards())
+                if (localListaCartasDeck.Count <= 0)
                 {
-                    VMCardInfo VMitem = new VMCardInfo(card);
-                    ListaCartasDeck.Add(VMitem);
+                    foreach (Carta card in Model.GetAllCards())
+                    {
+                        VMCardInfo VMitem = new VMCardInfo(card);
+                        if (!localListaCartasDeck.Contains(VMitem))
+                            localListaCartasDeck.Add(VMitem);
+                    }
                 }
             }
             //GameLoop.GameTimer.Start();
@@ -73,19 +88,19 @@ namespace TrabajoDSI2023G15
 
         private void CollectionDrag_Starting(object sender, DragItemsStartingEventArgs e)
         {
-            if (ListaCartas.Count > 1)
+            if (localListaCartas.Count > 1)
             {
                 VMCardInfo Item = e.Items[0] as VMCardInfo;
-                //e.Data.SetText(Item.Nombre.ToString());
-                //e.Data.SetText(Item.Imagen.ToString());
-                //e.Data.SetText(Item.Text.ToString());
-                //e.Data.RequestedOperation = DataPackageOperation.Move;
 
-                var index = ListaCartas.IndexOf(Item);
+                var index = localListaCartas.IndexOf(Item);
 
                 e.Data.SetData("nombre", Item.Nombre.ToString());
                 e.Data.SetData("text", Item.Text.ToString());
                 e.Data.SetData("img", Item.Imagen.ToString());
+                e.Data.SetData("imgMana", Item.ManaImagen.ToString());
+                e.Data.SetData("imgAtaque", Item.AtaqueImagen.ToString());
+                e.Data.SetData("imgVida", Item.VidaImagen.ToString());
+                e.Data.SetData("imgRareza", Item.RarezaImagen.ToString());
                 e.Data.SetData("mana", Item.Mana);
                 e.Data.SetData("vida", Item.Vida);
                 e.Data.SetData("ataque", Item.Ataque);
@@ -96,15 +111,11 @@ namespace TrabajoDSI2023G15
 
         private void DeckDrag_Starting(object sender, DragItemsStartingEventArgs e)
         {
-            if (ListaCartasDeck.Count > 1)
+            if (localListaCartasDeck.Count > 1)
             {
                 VMCardInfo Item = e.Items[0] as VMCardInfo;
-                //e.Data.SetText(Item.Nombre.ToString());
-                //e.Data.SetText(Item.Imagen.ToString());
-                //e.Data.SetText(Item.Text.ToString());
-                //e.Data.RequestedOperation = DataPackageOperation.Move;
 
-                var index = ListaCartasDeck.IndexOf(Item);
+                var index = localListaCartasDeck.IndexOf(Item);
 
                 e.Data.SetData("nombre", Item.Nombre.ToString());
                 e.Data.SetData("text", Item.Text.ToString());
@@ -112,6 +123,7 @@ namespace TrabajoDSI2023G15
                 e.Data.SetData("imgMana", Item.ManaImagen.ToString());
                 e.Data.SetData("imgAtaque", Item.AtaqueImagen.ToString());
                 e.Data.SetData("imgVida", Item.VidaImagen.ToString());
+                e.Data.SetData("imgRareza", Item.RarezaImagen.ToString());
                 e.Data.SetData("mana", Item.Mana);
                 e.Data.SetData("vida", Item.Vida);
                 e.Data.SetData("ataque", Item.Ataque);
@@ -134,6 +146,7 @@ namespace TrabajoDSI2023G15
                 var imgMana = await e.DataView.GetDataAsync("imgMana");
                 var imgAtaque = await e.DataView.GetDataAsync("imgAtaque");
                 var imgVida = await e.DataView.GetDataAsync("imgVida");
+                var imgRareza = await e.DataView.GetDataAsync("imgRareza");
                 var text = await e.DataView.GetDataAsync("text");
                 var mana = await e.DataView.GetDataAsync("mana");
                 var vida = await e.DataView.GetDataAsync("vida");
@@ -148,6 +161,7 @@ namespace TrabajoDSI2023G15
                 c.ManaImagen = imgMana.ToString();
                 c.AtaqueImagen = imgAtaque.ToString();
                 c.VidaImagen = imgVida.ToString();
+                c.RarezaImagen = imgRareza.ToString();
                 c.Text = text.ToString();
                 c.Mana = (int)mana;
                 c.Vida = (int)vida;
@@ -159,8 +173,8 @@ namespace TrabajoDSI2023G15
                 vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
                 vmc.CCImg.UseSystemFocusVisuals = true;
 
-                ListaCartasDeck.RemoveAt((int)indice);
-                ListaCartas.Add(vmc);
+                localListaCartasDeck.RemoveAt((int)indice);
+                localListaCartas.Add(vmc);
             }      
         }
 
@@ -175,6 +189,10 @@ namespace TrabajoDSI2023G15
             {
                 var nombre = await e.DataView.GetDataAsync("nombre");
                 var img = await e.DataView.GetDataAsync("img");
+                var imgMana = await e.DataView.GetDataAsync("imgMana");
+                var imgAtaque = await e.DataView.GetDataAsync("imgAtaque");
+                var imgVida = await e.DataView.GetDataAsync("imgVida");
+                var imgRareza = await e.DataView.GetDataAsync("imgRareza");
                 var text = await e.DataView.GetDataAsync("text");
                 var mana = await e.DataView.GetDataAsync("mana");
                 var vida = await e.DataView.GetDataAsync("vida");
@@ -186,6 +204,10 @@ namespace TrabajoDSI2023G15
                 Carta c = new Carta();
                 c.Nombre = nombre.ToString();
                 c.Imagen = img.ToString();
+                c.ManaImagen = imgMana.ToString();
+                c.AtaqueImagen = imgAtaque.ToString();
+                c.VidaImagen = imgVida.ToString();
+                c.RarezaImagen = imgRareza.ToString();
                 c.Text = text.ToString();
                 c.Mana = (int)mana;
                 c.Vida = (int)vida;
@@ -197,8 +219,8 @@ namespace TrabajoDSI2023G15
                 vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
                 vmc.CCImg.UseSystemFocusVisuals = true;
 
-                ListaCartas.RemoveAt((int)indice);
-                ListaCartasDeck.Add(vmc);
+                localListaCartas.RemoveAt((int)indice);
+                localListaCartasDeck.Add(vmc);
             }
         }
     }

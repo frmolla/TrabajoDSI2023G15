@@ -28,17 +28,22 @@
                 <Image Source="{x:Bind VidaImagen}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Width="45" Margin="-20,110,0,0"/>
                 <TextBlock Text="{x:Bind Vida}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="-2,121,0,0"
                            Foreground="#f4e86a" FontWeight="Bold"/>
+                <Image Source="{x:Bind RarezaImagen}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="45" Width="45" Margin="-20,20,0,-15"/>
             </Grid>
 
         </DataTemplate>
 
         <DataTemplate x:Key="ImageGridView_DefaultItemTemplateDeck"
                       x:DataType="local:VMCardInfo">
-            <Grid Height="40" Width="250" Margin="25">
+            <Grid Height="60" Width="250" Margin="25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{x:Bind Nombre}" FontSize="{Binding Value, ElementName=FontSlider}" Grid.Column="2" VerticalAlignment="Center" Foreground="#f4e86a" FontWeight="Bold"/>
+                <Rectangle StrokeThickness="3" Stroke="#f4e86a" Margin="5,0,0,0"/>
+                <TextBlock Text="{x:Bind Nombre}" FontSize="{Binding Value, ElementName=FontSlider}" Grid.Column="2" VerticalAlignment="Center" Foreground="#f4e86a" FontWeight="Bold" Margin="40,0,0,0"/>
+                <Image Source="{x:Bind ManaImagen}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="50" Width="50" Margin="-20,0,0,0"/>
+                <TextBlock Text="{x:Bind Mana}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="45" Margin="0,22,0,0"
+                           Foreground="#f4e86a" FontWeight="Bold"/>
             </Grid>
 
         </DataTemplate>
@@ -64,10 +69,10 @@
                     Stroke="#f4e86a"/>
             
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                <ListView x:Name="ImageGridView" TabIndex="0" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
                   CanDragItems="True" DragItemsStarting="CollectionDrag_Starting" DragOver="CollectionDrag_Over" AllowDrop="True" Drop="CollectionDrop"
                 Margin="100,250" MaxWidth="1000"
-                ItemsSource= "{x:Bind ListaCartas}"
+                ItemsSource= "{x:Bind localListaCartas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -97,9 +102,9 @@
                    Stroke="#f4e86a"
                    Stretch="Fill"/>
 
-            <ListView x:Name="ImageGridViewDeck" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250" Grid.Column="2"
+            <ListView x:Name="ImageGridViewDeck" TabIndex="1" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250" Grid.Column="2"
                   CanDragItems="True" DragItemsStarting="DeckDrag_Starting" DragOver="DeckDrag_Over" AllowDrop="True" Drop="DeckDrop"
-                ItemsSource= "{x:Bind ListaCartasDeck}"
+                ItemsSource= "{x:Bind localListaCartasDeck}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplateDeck}"/>
 
             <Rectangle Width="454" Height="90" Grid.Column="2"
@@ -123,7 +128,8 @@
                         Margin="97,0,0,86"
                         Foreground="#f4e86a"
                         FontSize="100"
-                        Click="BackButton_OnClick"/>
+                        Click="BackButton_OnClick"
+                        TabIndex="2"/>
         </Grid>
     </Viewbox>
 </Page>

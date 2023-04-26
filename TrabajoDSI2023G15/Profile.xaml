@@ -59,7 +59,7 @@
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Name" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="40" Foreground="#f4e86a" FontWeight="Bold"/>
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Center" TabIndex="1">
                         <Button.Template>
                             <ControlTemplate>
                                 <Image Source="/Assets/profile_icon.png" Height="75" Margin="60"/>
@@ -67,7 +67,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
-                <Button Click="Options_OnClick" HorizontalAlignment="Right">
+                <Button Click="Options_OnClick" HorizontalAlignment="Right" TabIndex="2">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="/Assets/Opciones.png" Height="90" Margin="50,0"/>
@@ -76,12 +76,12 @@
                 </Button>
             </StackPanel>
             <Canvas Margin="10,415,-10,196">
-                <Rectangle Fill="White"  Canvas.Left="540" Height="60" Width="600" Canvas.Top="-2"/>
-                <TextBlock  x:Name="Texto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"
+                <Rectangle Fill="White"  Canvas.Left="540" Height="60" Width="600" Canvas.Top="-12"/>
+                <TextBlock  x:Name="Texto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center"
                 TextWrapping="Wrap" 
                 Text="                - - - GAME INFO - - -" Canvas.Left="568" Height="34" Width="745" FontFamily="#Quando"
-                Foreground="Black" Canvas.Top="10" />
-                <ListView x:Name="ImageGridView" TabIndex="2" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="200,-30" Background="#d5403f"
+                Foreground="Black" />
+                <ListView x:Name="ImageGridView" TabIndex="0" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="200,-30" Background="#d5403f"
                 ItemsSource= "{x:Bind ListaPartidas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}" 
                 SelectionChanged="ChangeSelect"/>
@@ -90,7 +90,7 @@
                 KeyDown="ImageGridView_KeyDown"
                 DragItemsStarting="StartingDrag"-->
             </Canvas>
-            <Button x:Name="BackButton"
+            <Button x:Name="BackButton" TabIndex="3"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         IsEnabled="{x:Bind Frame.CanGoBack, Mode=OneWay}" 
                         ToolTipService.ToolTip="Back" 

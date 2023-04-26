@@ -45,7 +45,8 @@
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1">
                         <TextBlock Text="RESOLUTION" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <ComboBox Name="ResolutionBox"  SelectionChanged="Resolution_SelectionChanged"  HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="-1" PlaceholderText="Default" PlaceholderForeground="#FFD5403F" FocusVisualSecondaryBrush="White">
+                    <ComboBox Name="ResolutionBox"  SelectionChanged="Resolution_SelectionChanged"  HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="1" Grid.Column="1" Background="Gainsboro" TabIndex="0"
+                              FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="-1" PlaceholderText="Default" PlaceholderForeground="#FFD5403F" FocusVisualSecondaryBrush="White">
                         <ComboBoxItem Content="1920 x 1080"/>
                         <ComboBoxItem Content="1680 x 950"/>
                         <ComboBoxItem Content="1366 x 768"/>
@@ -54,7 +55,7 @@
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2">
                         <TextBlock Text="QUALITY" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <ComboBox HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="0">
+                    <ComboBox HorizontalAlignment="Center" Width="260" Height="70" Grid.Row="2" Grid.Column="1" Background="Gainsboro" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" VerticalAlignment="Center" SelectedIndex="0" TabIndex="1">
                         <ComboBoxItem Content="High"/>
                         <ComboBoxItem Content="Medium"/>
                         <ComboBoxItem Content="Low"/>
@@ -63,33 +64,33 @@
                         <TextBlock Text="FULLSCREEN" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
                     <CheckBox HorizontalAlignment="Center" Content="ENABLED" Grid.Row="3" Grid.Column="1" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFd5403f" 
-                              IsChecked="False" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" x:Name="FullScreenCheck"/>
+                              IsChecked="False" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" x:Name="FullScreenCheck" TabIndex="2"/>
 
 
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="1" Grid.Column="2">
                         <TextBlock Text="MASTER VOLUME" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <Slider  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="84" Width="300" Foreground="#FFFF3823"/>
+                    <Slider  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="84" Width="300" Foreground="#FFFF3823" TabIndex="3"/>
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="2" Grid.Column="2">
                         <TextBlock Text="SOUND EFFECTS" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <Slider  Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="24" Width="300" Foreground="#FFFF3823"/>
+                    <Slider  Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="24" Width="300" Foreground="#FFFF3823" TabIndex="4"/>
 
                     <StackPanel BorderThickness="6" BorderBrush="#FFF4E86A" Width="500" Height="80" Grid.Row="3" Grid.Column="2">
                         <TextBlock Text="MUSIC" HorizontalAlignment="Center" Margin="12" FontFamily="Quando" FontSize="36" Foreground="#FFF4E86A" FontWeight="Bold"/>
                     </StackPanel>
-                    <Slider  Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="44" Width="300" Foreground="#FFFF3823"/>
+                    <Slider  Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Maximum="100" Value="44" Width="300" Foreground="#FFFF3823" TabIndex="5"/>
 
 
 
 
                 </Grid>
-                <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick">
-                    <Image Source="/Assets/back_icon.png" Height="86" Width="96"/>
+                <Button Background="#00000000" Canvas.Top="830" Canvas.Left="40" Click="BackButton_OnClick" TabIndex="7">
+                    <Image Source="/Assets/back_icon.png" Height="86" Width="96" />
                 </Button>
 
                 <Button Background="#BFE61610" Canvas.Top="760" Canvas.Left="629" Width="540" Height="140" BorderBrush="#FFF4E86A" BorderThickness="4" 
-                    Content="SAVE CHANGES" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFF4E86A" Click="SaveChanges_OnClick"/>
+                    Content="SAVE CHANGES" FontFamily="Quando" FontSize="28" FontWeight="Bold" Foreground="#FFF4E86A" Click="SaveChanges_OnClick" TabIndex="6"/>
 
             </Canvas>
 

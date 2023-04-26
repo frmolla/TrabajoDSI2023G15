@@ -13,6 +13,7 @@ namespace TrabajoDSI2023G15
         public string ManaImagen { get; set; }
         public string AtaqueImagen { get; set; }
         public string VidaImagen { get; set; }
+        public string RarezaImagen { get; set; }
         public string Text { get; set; }
         public int Mana { get; set; }
         public int Vida { get; set; }
@@ -33,6 +34,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
+                RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -46,6 +48,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
+                RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -59,6 +62,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",            
                 VidaImagen = "Assets\\Vida.png",
+                RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -72,6 +76,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
+                RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,
@@ -85,6 +90,7 @@ namespace TrabajoDSI2023G15
                 ManaImagen = "Assets\\Mana.png",
                 AtaqueImagen = "Assets\\Ataque.png",
                 VidaImagen = "Assets\\Vida.png",
+                RarezaImagen = "Assets\\Rareza_Comun.png",
                 Text = "Texto de ejemplo",
                 Mana = 3,
                 Vida = 3,

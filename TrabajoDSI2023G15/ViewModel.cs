@@ -47,6 +47,7 @@ namespace TrabajoDSI2023G15
             ManaImagen = card.ManaImagen;
             AtaqueImagen= card.AtaqueImagen;
             VidaImagen = card.VidaImagen;
+            RarezaImagen= card.RarezaImagen;
             CCImg = new ContentControl();
             CCImg.Content = Img;
             CCImg.UseSystemFocusVisuals = true;
