@@ -160,11 +160,106 @@ namespace TrabajoDSI2023G15
                 e.AcceptedOperation = DataPackageOperation.Move;
         }
 
+        private void Hand_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VMCardInfo Item = e.ClickedItem as VMCardInfo;
+
+            if (Item.Mana <= myMana)
+            {
+        
+                Carta c = new Carta();
+                c.Nombre = Item.Nombre;
+                c.Imagen = Item.Imagen;
+                c.ManaImagen = Item.ManaImagen;
+                c.AtaqueImagen = Item.AtaqueImagen;
+                c.VidaImagen = Item.VidaImagen;
+                c.RarezaImagen = Item.RarezaImagen;
+                c.Text = Item.Text;
+                c.Mana = Item.Mana;
+                c.Vida = Item.Vida;
+                c.Ataque = Item.Ataque;
+                c.Rareza = Item.Rareza;
+                VMCardInfo vmc = new VMCardInfo(c);
+
+                vmc.CCImg = new ContentControl();
+                vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+                vmc.CCImg.UseSystemFocusVisuals = true;
+
+                MyHand.Remove(e.ClickedItem as VMCardInfo);
+                MyUnits.Add(vmc);
+
+                myMana -= Item.Mana;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(myMana)));
+            }
+        }
+
+        private void Hand_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                VMCardInfo Item = Hand.SelectedItem as VMCardInfo;
+                if (Item.Mana <= myMana)
+                {
+                    Carta c = new Carta();
+                    c.Nombre = Item.Nombre;
+                    c.Imagen = Item.Imagen;
+                    c.ManaImagen = Item.ManaImagen;
+                    c.AtaqueImagen = Item.AtaqueImagen;
+                    c.VidaImagen = Item.VidaImagen;
+                    c.RarezaImagen = Item.RarezaImagen;
+                    c.Text = Item.Text;
+                    c.Mana = Item.Mana;
+                    c.Vida = Item.Vida;
+                    c.Ataque = Item.Ataque;
+                    c.Rareza = Item.Rareza;
+                    VMCardInfo vmc = new VMCardInfo(c);
+
+                    vmc.CCImg = new ContentControl();
+                    vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+                    vmc.CCImg.UseSystemFocusVisuals = true;
+
+                    MyHand.Remove(Hand.SelectedItem as VMCardInfo);
+                    MyUnits.Add(vmc);
+
+                    myMana -= Item.Mana;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(myMana)));
+                }
+            }
+        }
+
+        private void PlayerBoard_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VMCardInfo Item = e.ClickedItem as VMCardInfo;
+
+            enemyLife -= Item.Ataque;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(enemyLife)));
+
+            if (enemyLife <= 0)
+                Frame.Navigate(typeof(MainPage));
+        }
+
+        private void PlayerBoard_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                VMCardInfo Item = Hand.SelectedItem as VMCardInfo;
+
+                enemyLife -= Item.Ataque;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(enemyLife)));
+
+                if (enemyLife <= 0)
+                    Frame.Navigate(typeof(MainPage));
+            }
+        }
+
         private async void EnemyDrop(object sender, DragEventArgs e)
         {
             var ataque = await e.DataView.GetDataAsync("ataque");
             enemyLife -= (int)ataque;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(enemyLife)));
+
+            if (enemyLife <= 0)
+                Frame.Navigate(typeof(MainPage));
         }
 
         private void Options_OnClick(object sender, RoutedEventArgs e)

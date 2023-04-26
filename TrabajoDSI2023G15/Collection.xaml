@@ -71,7 +71,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
                 <ListView x:Name="ImageGridView" TabIndex="0" IsFocusEngagementEnabled ="True" HorizontalAlignment="Center" VerticalAlignment="Top" 
                   CanDragItems="True" DragItemsStarting="CollectionDrag_Starting" DragOver="CollectionDrag_Over" AllowDrop="True" Drop="CollectionDrop"
-                Margin="100,250" MaxWidth="1000"
+                Margin="100,250" MaxWidth="1000"  ItemClick="ImageGridView_ItemClick" KeyDown="ImageGridView_KeyDown" IsItemClickEnabled="True"
                 ItemsSource= "{x:Bind localListaCartas}"
                 ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplate}">
                     <ListView.ItemsPanel>
@@ -105,7 +105,8 @@
             <ListView x:Name="ImageGridViewDeck" TabIndex="1" IsFocusEngagementEnabled ="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,250" Grid.Column="2"
                   CanDragItems="True" DragItemsStarting="DeckDrag_Starting" DragOver="DeckDrag_Over" AllowDrop="True" Drop="DeckDrop"
                 ItemsSource= "{x:Bind localListaCartasDeck}"
-                ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplateDeck}"/>
+                ItemTemplate= "{StaticResource ImageGridView_DefaultItemTemplateDeck}"
+                      ItemClick="ImageGridViewDeck_ItemClick" KeyDown="ImageGridViewDeck_KeyDown" IsItemClickEnabled="True"/>
 
             <Rectangle Width="454" Height="90" Grid.Column="2"
                 VerticalAlignment="Top" 

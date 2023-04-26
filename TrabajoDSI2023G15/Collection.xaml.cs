@@ -14,6 +14,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -221,6 +222,120 @@ namespace TrabajoDSI2023G15
 
                 localListaCartas.RemoveAt((int)indice);
                 localListaCartasDeck.Add(vmc);
+            }
+        }
+
+        private void ImageGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VMCardInfo Item = e.ClickedItem as VMCardInfo;
+
+            Carta c = new Carta();
+            c.Nombre = Item.Nombre;
+            c.Imagen = Item.Imagen;
+            c.ManaImagen = Item.ManaImagen;
+            c.AtaqueImagen = Item.AtaqueImagen;
+            c.VidaImagen = Item.VidaImagen;
+            c.RarezaImagen = Item.RarezaImagen;
+            c.Text = Item.Text;
+            c.Mana = Item.Mana;
+            c.Vida = Item.Vida;
+            c.Ataque = Item.Ataque;
+            c.Rareza = Item.Rareza;
+            VMCardInfo vmc = new VMCardInfo(c);
+
+            vmc.CCImg = new ContentControl();
+            vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+            vmc.CCImg.UseSystemFocusVisuals = true;
+
+            localListaCartas.Remove(e.ClickedItem as VMCardInfo);
+            localListaCartasDeck.Add(vmc);
+        }
+
+        private void ImageGridView_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                VMCardInfo Item = ImageGridView.SelectedItem as VMCardInfo;
+
+                var index = localListaCartasDeck.IndexOf(Item);
+
+                Carta c = new Carta();
+                c.Nombre = Item.Nombre;
+                c.Imagen = Item.Imagen;
+                c.ManaImagen = Item.ManaImagen;
+                c.AtaqueImagen = Item.AtaqueImagen;
+                c.VidaImagen = Item.VidaImagen;
+                c.RarezaImagen = Item.RarezaImagen;
+                c.Text = Item.Text;
+                c.Mana = Item.Mana;
+                c.Vida = Item.Vida;
+                c.Ataque = Item.Ataque;
+                c.Rareza = Item.Rareza;
+                VMCardInfo vmc = new VMCardInfo(c);
+
+                vmc.CCImg = new ContentControl();
+                vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+                vmc.CCImg.UseSystemFocusVisuals = true;
+
+                localListaCartas.Remove(ImageGridView.SelectedItem as VMCardInfo);
+                localListaCartasDeck.Add(vmc);
+            }
+        }
+
+        private void ImageGridViewDeck_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VMCardInfo Item = e.ClickedItem as VMCardInfo;
+
+            Carta c = new Carta();
+            c.Nombre = Item.Nombre;
+            c.Imagen = Item.Imagen;
+            c.ManaImagen = Item.ManaImagen;
+            c.AtaqueImagen = Item.AtaqueImagen;
+            c.VidaImagen = Item.VidaImagen;
+            c.RarezaImagen = Item.RarezaImagen;
+            c.Text = Item.Text;
+            c.Mana = Item.Mana;
+            c.Vida = Item.Vida;
+            c.Ataque = Item.Ataque;
+            c.Rareza = Item.Rareza;
+            VMCardInfo vmc = new VMCardInfo(c);
+
+            vmc.CCImg = new ContentControl();
+            vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+            vmc.CCImg.UseSystemFocusVisuals = true;
+
+            localListaCartasDeck.Remove(e.ClickedItem as VMCardInfo);
+            localListaCartas.Add(vmc);
+        }
+
+        private void ImageGridViewDeck_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                VMCardInfo Item = ImageGridView.SelectedItem as VMCardInfo;
+
+                var index = localListaCartasDeck.IndexOf(Item);
+
+                Carta c = new Carta();
+                c.Nombre = Item.Nombre;
+                c.Imagen = Item.Imagen;
+                c.ManaImagen = Item.ManaImagen;
+                c.AtaqueImagen = Item.AtaqueImagen;
+                c.VidaImagen = Item.VidaImagen;
+                c.RarezaImagen = Item.RarezaImagen;
+                c.Text = Item.Text;
+                c.Mana = Item.Mana;
+                c.Vida = Item.Vida;
+                c.Ataque = Item.Ataque;
+                c.Rareza = Item.Rareza;
+                VMCardInfo vmc = new VMCardInfo(c);
+
+                vmc.CCImg = new ContentControl();
+                vmc.CCImg.Content = new BitmapImage(new Uri("ms-appx:///" + vmc.Imagen));
+                vmc.CCImg.UseSystemFocusVisuals = true;
+
+                localListaCartasDeck.Remove(ImageGridView.SelectedItem as VMCardInfo);
+                localListaCartas.Add(vmc);
             }
         }
     }
