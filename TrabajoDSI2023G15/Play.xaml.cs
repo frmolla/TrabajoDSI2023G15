@@ -98,9 +98,11 @@ namespace TrabajoDSI2023G15
         }
         private async void BattlefieldDrag_Over(object sender, DragEventArgs e)
         {
-            var mana = await e.DataView.GetDataAsync("mana");
-            if ((int)mana <= myMana)
-                e.AcceptedOperation = DataPackageOperation.Move;
+            if (e.DataView.Contains("mana")) { 
+                var mana = await e.DataView.GetDataAsync("mana");
+                if ((int)mana <= myMana)
+                    e.AcceptedOperation = DataPackageOperation.Move;
+            }
         }
 
         private async void BattlefieldDrop(object sender, DragEventArgs e)
